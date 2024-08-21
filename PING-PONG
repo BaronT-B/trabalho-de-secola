@@ -1,0 +1,95 @@
+//variavel da bola
+let Xball = 100
+let Yball = 200
+let diametro = 15
+let velocistaX= 2
+let velocistaY= 2
+//variavel da raquete PL1
+let Xtaco = 5
+let Ytaco = 150
+let comprimento = 10
+let altura = 90
+//variavel da raquete PL2
+let Xtaco2 = 785
+let Ytaco2 = 155
+let comprimento2 = 10
+let altura2 = 90
+
+
+function setup() {
+  createCanvas(800, 600);
+}
+
+function draw() {
+  background("black");
+  showTheBall();
+  ColisãoParede();
+  ColisãoRaquetes();
+  mostrarRaquete();
+  raqueteOponente();
+  keys_Pl1();
+  keys_Pl2();
+  
+  
+  
+function showTheBall(){
+  circle(Xball , Yball , diametro);
+}
+  function ColisãoParede(){
+Xball += velocistaX;
+Yball += velocistaY;
+  
+  if (Xball > width  ||
+      Xball < 0 ){
+    velocistaX *= -1 }
+
+  
+  if (Yball > height || Yball < 0 ){
+      velocistaY *= -1;}
+  } 
+function ColisãoRaquetes(){
+  
+  if (Xball < Xtaco + comprimento ){
+    velocistaX *=-1;
+  }
+if (Xball > Xtaco2 + comprimento2){
+  velocistaX *=-1;
+}
+  
+  
+  
+}
+  
+  
+  
+function mostrarRaquete() {
+rect(Xtaco , Ytaco , comprimento, altura)
+}
+  
+  function raqueteOponente(){
+  rect(Xtaco2 , Ytaco2 , comprimento2, altura2)
+}
+
+
+}
+function keys_Pl1(){
+  if (keyIsDown(UP_ARROW)){
+    Ytaco -= 10;
+  }
+  
+  if (keyIsDown(DOWN_ARROW)){
+   Ytaco += 10;
+  }
+}
+
+function keys_Pl2(){
+  if(keyIsDown(87)){
+    Ytaco2 -= 10;
+  }
+  
+  if(keyIsDown(83)){
+    Ytaco2 += 10;}
+  
+  
+  
+}
